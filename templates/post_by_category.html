@@ -2,26 +2,7 @@
 
 {% block content %}
 <main class="container">
-    <div class="rounded text-body-emphasis bg-body-secondary"
-        style="background-image: url({post.featured_image}); background-blend-mode: overlay; background-size: cover;">
-        <div class="col-lg-6 px-0">
-            {% for post in featured_post %}
-            {% if forloop.first %}
-            <h1 class="display-4 fst-italic">
-                {{ post.title }}
-            </h1>
-            <p class="lead my-3">
-                {{ post.blog_body }}
-            </p>
-            <p class="lead mb-0">
-                <a href="#" class="text-body-emphasis fw-bold">Continue reading...</a>
-            </p>
-            {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-
-
+    
     <!-- Featured Posts Section -->
     <div class="container my-5">
         <!-- Section title -->
@@ -35,7 +16,9 @@
             <div class="col-md-6">
                 <article class="featured-post">
                     <h2 class="featured-title">
-                        {{ post.title }}
+                        <a href="{% url 'blogs' post.slug %}" class="text-dark">
+                 {{ post.title }}
+            </a> 
                     </h2>
 
                     <div class="featured-meta">

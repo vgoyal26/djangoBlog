@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Featured Posts Section -->
+<div class="container my-5">
+    <!-- Section title -->
+    <div class="mb-4">
+        <h2 class="featured-heading">Search Term - {{ keyword }} </h2>
+    </div>
+    <div class="row g-5">
+        <!-- Post 1 -->
+        {% if blogs%}
+        {% for blog in blogs %}
+        <div class="col-md-6">
+            <article class="featured-post">
+                <h2 class="featured-title">
+                    <a href="{% url 'blogs' blog.slug %}" class="text-dark">
+                        {{ blog.title }}
+                    </a>
+                </h2>
+
+                <div class="featured-meta">
+                    {{ blog.created_at | timesince }} | {{ blog.author }}
+                </div>
+
+                <p class="featured-text">
+                    {{ blog.short_description | truncatewords:30 }}
+                </p>
+            </article>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No posts Found</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
